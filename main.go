@@ -14,6 +14,7 @@ var port int
 func init() {
 	flag.StringVar(&view.Device, "d", "video0", "Select V4l2 device.")
 	flag.IntVar(&port, "p", 8080, "Select server port.")
+	flag.BoolVar(&view.WhiteBalance, "w", false, "Enable auto white balance.")
 }
 
 func main() {
@@ -22,7 +23,7 @@ func main() {
 	flag.Parse()
 	handlers.Ready = false
 
-	if err = view.CameraInit(view.Device); err != nil {
+	if err = view.CameraInit(view.Device, view.WhiteBalance); err != nil {
 		log.Fatalln(err)
 	}
 	defer view.Camera.Close()

@@ -80,7 +80,7 @@ func Setup(w http.ResponseWriter, r *http.Request) {
 		view.StopStream = false
 
 		view.Camera.Close()
-		if err = view.CameraInit(view.Device); err != nil {
+		if err = view.CameraInit(view.Device, view.WhiteBalance); err != nil {
 			log.Println("Falied on final stage setting cam format")
 			fmt.Fprint(w, err)
 			Ready = false

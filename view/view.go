@@ -15,6 +15,9 @@ var Camera *webcam.Webcam
 //Device - устройство v4l.
 var Device string
 
+//WhiteBalance - используем ли автоматический баланс белого.
+var WhiteBalance bool
+
 //Timeout - таймаут камеры
 type Timeout *webcam.Timeout
 
@@ -22,12 +25,14 @@ type Timeout *webcam.Timeout
 type FrameSizes []webcam.FrameSize
 
 //CameraInit - инициализация камеры
-func CameraInit(d string) (err error) {
+func CameraInit(d string, wb bool) (err error) {
 	if Camera, err = webcam.Open(fmt.Sprintf("/dev/%s", d)); err != nil {
 		return
 	}
-	if err = Camera.SetAutoWhiteBalance(false); err != nil {
-		return
+	if wb {
+		if err = Camera.SetAutoWhiteBalance(true); err != nil {
+	 		return
+		}
 	}
 
 	return
