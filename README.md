@@ -15,3 +15,5 @@ Simple v4l2 streamer with web interface
 `9stream -d video0` to use /dev/video0 v4l2 device
 
 `9stream -p 8888` to start listening on :8888 port
+
+`9stream -w` to enable auto white balance
