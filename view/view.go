@@ -31,7 +31,7 @@ func CameraInit(d string, wb bool) (err error) {
 	}
 	if wb {
 		if err = Camera.SetAutoWhiteBalance(true); err != nil {
-	 		return
+			return
 		}
 	}
 
@@ -106,7 +106,9 @@ func ReadStream(camera *webcam.Webcam, pool *StreamPool, jpeg bool) {
 			buf.Write(frame)
 			buf.Write([]byte("\r\n--informs\r\n"))
 		} else {
+			buf.Write([]byte(fmt.Sprintf("Content-Type: image/jpeg\r\nContent-Length: %d\r\n\r\n", len(frame))))
 			buf.Write(frame)
+			buf.Write([]byte("\r\n--informs\r\n"))
 		}
 
 		func() {
