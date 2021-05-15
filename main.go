@@ -1,12 +1,13 @@
 package main
 
 import (
-	"9stream/handlers"
-	"9stream/view"
 	"flag"
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/sh2nk/9stream/handlers"
+	"github.com/sh2nk/9stream/view"
 )
 
 var port int

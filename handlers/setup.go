@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"9stream/view"
 	"fmt"
 	"log"
 	"net/http"
@@ -9,6 +8,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/sh2nk/9stream/view"
 
 	"github.com/blackjack/webcam"
 )

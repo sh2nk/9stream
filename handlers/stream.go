@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"9stream/view"
 	"bytes"
 	"net/http"
+
+	"github.com/sh2nk/9stream/view"
 
 	uuid "github.com/satori/go.uuid"
 )
@@ -12,7 +13,7 @@ import (
 func Stream(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "multipart/x-mixed-replace; boundary=informs")
 
-	name := uuid.Must(uuid.NewV4()).String()
+	name := uuid.Must(uuid.NewV4(), nil).String()
 	stream := make(chan *bytes.Buffer)
 
 	func() {
